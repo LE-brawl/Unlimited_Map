@@ -2,12 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: dark; }
+/* ── Design tokens ────────────────────────────────────────────────── */
+/* Light mode (Runwayml monochrome editorial system) */
+:root {
+  color-scheme: light;
+  --bg-base:       #ffffff;
+  --bg-panel:      #fafafa;
+  --bg-node:       #ffffff;
+  --border:        #e7eaf0;
+  --border-mid:    #c9ccd1;
+  --ink:           #030303;
+  --ink-soft:      #1a1a1a;
+  --graphite:      #404040;
+  --rw-slate:      #676f7b;
+  --stone:         #939393;
+  --accent:        #000000;
+  --accent-fg:     #ffffff;
+  --accent-subtle: rgba(0, 0, 0, 0.06);
+  --surface-cool:  #d0d4d4;
+  /* ReactFlow */
+  --flow-bg:       #f5f5f5;
+  --flow-dot:      #d0d0d0;
+  --flow-edge:     #404040;
+  --flow-handle:   #030303;
+  --flow-minimap:  #ebebeb;
+  --flow-mask:     rgba(245, 245, 245, 0.65);
+  --flow-node:     #404040;
+}
+
+/* Dark mode */
+html.dark {
+  color-scheme: dark;
+  --bg-base:       #091019;
+  --bg-panel:      #0c1622;
+  --bg-node:       #101c29;
+  --border:        #1e293b;
+  --border-mid:    #243446;
+  --ink:           #f1f5f9;
+  --ink-soft:      #cbd5e1;
+  --graphite:      #94a3b8;
+  --rw-slate:      #64748b;
+  --stone:         #475569;
+  --accent:        #22d3ee;
+  --accent-fg:     #0f172a;
+  --accent-subtle: rgba(34, 211, 238, 0.10);
+  --surface-cool:  #14202d;
+  /* ReactFlow */
+  --flow-bg:       #091019;
+  --flow-dot:      #243446;
+  --flow-edge:     #22d3ee;
+  --flow-handle:   #22d3ee;
+  --flow-minimap:  #0c1622;
+  --flow-mask:     rgba(3, 10, 18, 0.72);
+  --flow-node:     #0e7490;
+}
+
+/* ── Base resets ──────────────────────────────────────────────────── */
 * { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; background: #091019; color: #e5edf7; }
+html, body { margin: 0; min-height: 100%; background: var(--bg-base); color: var(--ink); }
 button, input, textarea, select { font: inherit; }
 button { cursor: pointer; }
+
+/* ── ReactFlow overrides ──────────────────────────────────────────── */
 .react-flow__node { font-size: 12px; }
 .react-flow__attribution { display: none; }
-.react-flow__controls button { background: #14202d; border-bottom-color: #2b3b4d; color: #d5e4f2; }
-.react-flow__minimap { background: #0c1622; }
+
+.react-flow__controls button {
+  background: var(--bg-panel);
+  border-bottom-color: var(--border);
+  color: var(--ink);
+}
+.react-flow__minimap { background: var(--flow-minimap); }
+.react-flow__minimap-mask { fill: var(--flow-mask); }
